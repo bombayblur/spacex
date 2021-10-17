@@ -40,7 +40,6 @@ describe("App.js", () => {
 
     await page.click('.MuiBackdrop-root');
 
-
   })
 
   afterAll(() => browser.close());
