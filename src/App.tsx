@@ -104,10 +104,10 @@ export default function App() {
         </Typography>
       </Box>
       <Grid container spacing={0}>
-        <Grid item xs={12} md={2} alignContent="center">
+        <Grid item xs={12} style={{margin:"20 0"}}>
           <Compare active={toCompare.length === 2} />
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} style={{margin:20 }}>
           <Filter />
         </Grid>
       </Grid>

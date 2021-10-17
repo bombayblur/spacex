@@ -15,7 +15,7 @@ const Filter = () => {
         variant="h5"
         gutterBottom
         component="div"
-        style={{ display: "inline-block", margin: 5 }}
+        style={{ display: "inline-block", margin: 5}}
       >
         Filter By
       </Typography>

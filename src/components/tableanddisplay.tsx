@@ -7,10 +7,14 @@ const TableAndDisplay = () => {
     <Box style={{padding: 20,}}>
       <Grid container spacing={0}>
         <Grid item xs={12} md={6}>
-         <DataTable/>
+        <Box sx={{height:"80vh"}}>
+          <DataTable/>
+        </Box> 
         </Grid>
         <Grid item xs={12} md={6}>
+        <Box sx={{height:"80vh"}}>
           <DataDisplay/>
+        </Box> 
         </Grid>
       </Grid>
     </Box>

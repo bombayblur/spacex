@@ -91,6 +91,7 @@ const DataTable = () => {
       rows={rows}
       columns={columns}
       onRowClick={onRowClick}
+      pageSize={10}
       checkboxSelection
       disableSelectionOnClick
       onSelectionModelChange={selectionModelChanged}

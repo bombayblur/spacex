@@ -12,9 +12,9 @@ import Paper from "@mui/material/Paper";
 const DataDisplay = () => {
   const { selectedLaunch } = React.useContext<AppState>(stateContext);
   return (
-    <div style={{ padding: 20, background: "#F3F3F3", height: "100vh" }}>
+    <div style={{ padding: 20, background: "#F3F3F3", height: "80vh" }}>
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Table sx={{ minWidth: 400 }} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell>Mission Name</TableCell>
@@ -61,11 +61,11 @@ const DataDisplay = () => {
             {selectedLaunch.rocket?.second_stage?.payloads?.map((item)=>(
                 <>
                 <TableRow>
-                    <TableCell>Mass (Kg)</TableCell>
+                    <TableCell>Payload Mass (Kg)</TableCell>
                     <TableCell align="right">{item?.payload_mass_kg}</TableCell>
                 </TableRow>
                 <TableRow>
-                    <TableCell>Type</TableCell>
+                    <TableCell>Payload Type</TableCell>
                     <TableCell align="right">{item?.payload_type}</TableCell>
                 </TableRow>
                 </>

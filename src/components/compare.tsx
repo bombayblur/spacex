@@ -64,7 +64,7 @@ const Compare = (props: any) => {
               Comaprison
             </Typography>
             <TableContainer component={Paper}>
-              <Table sx={{ minWidth: 650 }} aria-label="simple table">
+              <Table sx={{ minWidth: 400 }} aria-label="simple table">
                 <TableHead>
                   <TableRow>
                     <TableCell>Mission Name</TableCell>
@@ -150,7 +150,7 @@ const Compare = (props: any) => {
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell>Mass (Kg)</TableCell>
+                    <TableCell>Payload Mass (Kg)</TableCell>
                     <TableCell align="right">
                       {
                         comp1Payloads![0]?.payload_mass_kg
@@ -163,7 +163,7 @@ const Compare = (props: any) => {
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell>Type</TableCell>
+                    <TableCell>Payload Type</TableCell>
                     <TableCell align="right">
                       {
                         comp1Payloads![0]?.payload_type
