@@ -65,7 +65,6 @@ const DataTable = () => {
     }
     setSelectionModel(selectionModel);
     setToCompare(selectionModel);
-    
   }
 
   function onRowClick(params: GridRowParams, event: MuiEvent) {

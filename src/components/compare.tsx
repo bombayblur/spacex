@@ -44,6 +44,7 @@ const Compare = (props: any) => {
         variant="contained"
         size="large"
         sx={{ mx: 3 }}
+        data-testId="compare-button"
       >
         Compare
       </Button>
@@ -68,8 +69,8 @@ const Compare = (props: any) => {
                 <TableHead>
                   <TableRow>
                     <TableCell>Mission Name</TableCell>
-                    <TableCell align="right">{comp1?.mission_name}</TableCell>
-                    <TableCell align="right">{comp2?.mission_name}</TableCell>
+                    <TableCell id="compare1" align="right">{comp1?.mission_name}</TableCell>
+                    <TableCell id="compare2" align="right">{comp2?.mission_name}</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
