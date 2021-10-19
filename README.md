@@ -1,6 +1,6 @@
 # SpaceX Launches Tracker
 
-This project was created using React, Typescript, Apollo, Graphql. Just run the project using `yarn start` or `npm start` to get started.
+This project was created using React, Material-UI, Typescript, Apollo, Graphql. Just run the project using `yarn start` or `npm start` to get started.
 
 This is a simple SpaceX Launches Tracker that gives you a glimpse of information of past launches. the left side is the list of launches and the right side contains an information pane that gives the user more details about the launch. 
 
@@ -13,7 +13,7 @@ Open [http://localhost:3000]
 
 ### `yarn test:e2e`
 
-Launches the test runner with a headfull chrome. This script runs the test that was requested in the coding challenge. The test picks two random launches and then compares them and returns back to the previous screen. The test checks for certain components that should be loaded. When a comparisson is carried out the test checks wheter the correct launches are being compared or not.
+Launches the test runner with a headfull chrome. This script runs the test that was requested in the coding challenge. The test picks two random launches and then compares them and returns back to the previous screen. The test checks for certain components that should be loaded. When a comparisson is carried out the test checks whether the correct launches are being compared or not.
 
 ### `yarn generate --watch`
 
@@ -31,7 +31,7 @@ For the filters, two categories were provided, which were mission name and rocke
 
 ### Compare
 
-For the cmpare button, I decided to firstly rig the table such that it can only select two entries at a time. If you select three entries the entry that was selected first gets deselected. This ensures that only two entries remain selected at any given time. Also the compare button is activated only when there are two entries selected. In a working project I wouldn't do this as selection has other uses also, but for this project, I wanted to try out something different hence I used this approach.
+For the cmpare button, I decided to firstly rig the table such that it can only select two entries at a time. If you select more than two entries the entry that was selected first gets deselected. This ensures that only two entries remain selected at any given time. Also the compare button is activated only when there are two entries selected, else it remains deactivated. In a productions project I wouldn't do this as selection has other uses also, and they shouldn't be limitted to just two entries. but for this project, I wanted to try out something different hence I used this approach.
 
 # Personal Notes
 
