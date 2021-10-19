@@ -1,14 +1,12 @@
 import {
-  FormControl,
   TextField,
-  FormHelperText,
   Typography,
 } from "@mui/material";
 import { useContext } from "react";
 import { AppState, stateContext } from "../App";
 
 const Filter = () => {
-  const {mission, setMission, rocket, setRocket} = useContext<AppState>(stateContext);
+  const {missionFilter, setMissionFilter, rocketFilter, setRocketFilter} = useContext<AppState>(stateContext);
   return (
     <>
       <Typography
@@ -25,8 +23,8 @@ const Filter = () => {
         variant="outlined"
         size="small"
         sx={{ mx: 0.5}}
-        value = {mission}
-        onChange={(e)=>setMission(e.currentTarget.value)}
+        value = {missionFilter}
+        onChange={(e)=>setMissionFilter(e.currentTarget.value)}
       />
       <TextField
         id="rocket-filter"
@@ -34,8 +32,8 @@ const Filter = () => {
         variant="outlined"
         size="small"
         sx={{ mx: 0.5}}
-        value = {rocket}
-        onChange={(e)=>setRocket(e.currentTarget.value)}
+        value = {rocketFilter}
+        onChange={(e)=>setRocketFilter(e.currentTarget.value)}
       />
     </>
   );

@@ -21,6 +21,10 @@ This will run the code generator to generate the types before hand.
 
 # Approach
 
+### State
+
+Given that this was a tiny project, I used React's Context for state management. Although it is a quick and dirty solution, a more standard solution like Redux would have allowed me to maintain a better project structure. Using Context did allow me to avoid prop drilling, but this also led to a lot of the logic residing in App.tsx which is the entry point of the application.
+
 ### Data Display
 
 Given the project involved depicting a large amount of information, I felt that using tables to depict all the data would have been the optimal approach. Material-UI's `<datagrid>` seemed to be a good choice for this. I decided to split the screen into two sections, the first would contain a list of launches and the second would give the user more details about the launch that is currently selected. This helps conserve space, without compromising on how much data we can show.
@@ -35,7 +39,7 @@ For the cmpare button, I decided to firstly rig the table such that it can only 
 
 # Personal Notes
 
-If I had more time I would have paid more attention to the styling of the application. I would also have liked to add better filtering, which read the fetched data and generated appropriate filters in advance to choose from rather than just having a text input or search field.
+If I had more time I would have paid more attention to the styling of the application. I would have also paid more attention to the naming of items. I would also have liked to add better filtering, which read the fetched data and generated appropriate filters in advance to choose from rather than just having a text input or search field.
 
 ## Omission
 

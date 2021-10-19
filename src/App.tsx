@@ -1,5 +1,9 @@
 import { gql, useQuery } from "@apollo/client";
-import { Divider, Grid, Typography } from "@mui/material";
+import {
+  Grid,
+  Typography,
+  CircularProgress
+} from "@mui/material";
 import { Box } from "@mui/system";
 import { GridSelectionModel } from "@mui/x-data-grid";
 import { createContext, useState } from "react";
@@ -43,59 +47,88 @@ export const spacexQuery = gql`
   }
 `;
 
+// Type definition for app state.
+//
 export interface AppState {
-  selected: number;
-  setSelected: (n: number) => void;
+  selectedLaunchId: number;
+  setSelectedLaunchId: (n: number) => void;
   selectedLaunch: Launch;
-  data: GetLaunchesQuery['launchesPast'];
+  data: GetLaunchesQuery["launchesPast"];
   toCompare: GridSelectionModel | null;
   setToCompare: (a: GridSelectionModel) => void;
-  compareModal: boolean;
-  setCompareModal:(c:boolean)=>void;
-  mission:string,
-  setMission:(m:string)=> void,
-  rocket:string,
-  setRocket:(r:string)=> void
+  showCompareModal: boolean;
+  setShowCompareModal: (c: boolean) => void;
+  missionFilter: string;
+  setMissionFilter: (m: string) => void;
+  rocketFilter: string;
+  setRocketFilter: (r: string) => void;
 }
 
+// using React's context for state management as the project is small/
+//
 export const stateContext = createContext<AppState>({} as AppState);
 
 export default function App() {
   const { loading, error, data } = useQuery<GetLaunchesQuery>(spacexQuery);
-  const [selected, setSelected] = useState<number>(0);
-  const [toCompare, setToCompare] = useState<GridSelectionModel>([]);
-  const [compareModal, setCompareModal] = useState<boolean>(false)
-  const [mission, setMission] = useState<string>('');
-  const [rocket, setRocket] = useState<string>('');
 
+  const [selectedLaunchId, setSelectedLaunchId] = useState<number>(0); // currently selected launch Id
+
+  const [toCompare, setToCompare] = useState<GridSelectionModel>([]); // items to be comapred
+  const [showCompareModal, setShowCompareModal] = useState<boolean>(false); // compare button active or not
+
+  const [missionFilter, setMissionFilter] = useState<string>(""); // mission filter
+  const [rocketFilter, setRocketFilter] = useState<string>(""); // rocket filter
+
+  // Loading animation while query is being fetched.
+  //
   if (loading) {
-    return <div>Loading</div>;
+    return (
+      <Grid
+        container
+        spacing={0}
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        style={{ minHeight: "100vh" }}
+      >
+        <Grid item xs={3}>
+          <CircularProgress size={100} />
+        </Grid>
+      </Grid>
+    );
   }
-
+  //
   if (error || !data) {
-    console.log(error);
     return <div>{error?.message}</div>;
   }
 
-  const selectedLaunch: Launch = data!.launchesPast![selected]! as Launch;
-  let launchesPast = data!.launchesPast!.filter((item)=>item?.mission_name!.includes(mission));
-  launchesPast = launchesPast!.filter((item)=>item?.rocket!.rocket_name!.includes(rocket));
+  const selectedLaunch: Launch = data!.launchesPast![selectedLaunchId]! as Launch;
+
+  // This is where the filtering mechanism resides.
+  //
+  let launchesPast = data!.launchesPast!.filter((item) =>
+    item?.mission_name!.includes(missionFilter)
+  );
+  launchesPast = launchesPast!.filter((item) =>
+    item?.rocket!.rocket_name!.includes(rocketFilter)
+  );
 
   return (
+    // This is where the global state originates from.
     <stateContext.Provider
       value={{
-        selected: selected,
-        setSelected: setSelected,
+        selectedLaunchId: selectedLaunchId,
+        setSelectedLaunchId: setSelectedLaunchId,
         selectedLaunch: selectedLaunch,
         data: launchesPast,
         toCompare: toCompare,
         setToCompare: setToCompare,
-        compareModal: compareModal,
-        setCompareModal: setCompareModal,
-        mission:mission,
-        setMission:setMission,
-        rocket:rocket,
-        setRocket:setRocket
+        showCompareModal: showCompareModal,
+        setShowCompareModal: setShowCompareModal,
+        missionFilter: missionFilter,
+        setMissionFilter: setMissionFilter,
+        rocketFilter: rocketFilter,
+        setRocketFilter: setRocketFilter,
       }}
     >
       <Box sx={{ width: "100%", maxWidth: "60vw", mx: "auto", pt: 5 }}>
@@ -104,14 +137,14 @@ export default function App() {
         </Typography>
       </Box>
       <Grid container spacing={0}>
-        <Grid item xs={12} style={{margin:"20 0"}}>
+        <Grid item xs={12} style={{ margin: "20 0" }}>
           <Compare active={toCompare.length === 2} />
         </Grid>
-        <Grid item xs={12} style={{margin:20 }}>
+        <Grid item xs={12} style={{ margin: 20 }}>
           <Filter />
         </Grid>
       </Grid>
-      <TableAndDisplay/>
+      <TableAndDisplay />
     </stateContext.Provider>
   );
 }

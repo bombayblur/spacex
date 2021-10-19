@@ -10,6 +10,8 @@ import {
 import { makeStyles } from "@mui/styles";
 import { AppState, stateContext } from "../App";
 
+// Custom classes for row colour of selected launch
+//
 const useStyles = makeStyles({
   root: {
     borderColor: "#F3F3F3",
@@ -55,11 +57,13 @@ const columns: GridColDef[] = [
 const DataTable = () => {
   const classes = useStyles();
   const [selectionModel, setSelectionModel] = React.useState<GridSelectionModel>([]);
-  const {selected, setSelected, data, setToCompare} = React.useContext<AppState>(stateContext);
+  const {selectedLaunchId, setSelectedLaunchId, data, setToCompare} = React.useContext<AppState>(stateContext);
 
   let rows: GridRowData[] = [];
 
-  function selectionModelChanged(selectionModel: GridSelectionModel) {
+  // Logic for making sure only two items can be selected at any given time.
+  //
+  function onRowSelect(selectionModel: GridSelectionModel) {
     if (selectionModel.length > 2) {
       selectionModel.shift();
     }
@@ -68,8 +72,8 @@ const DataTable = () => {
   }
 
   function onRowClick(params: GridRowParams, event: MuiEvent) {
-    setSelectionModel([]);
-    setSelected(parseInt(params.id.toString()));
+    setSelectionModel([]); // deselects any previously selected rows
+    setSelectedLaunchId(parseInt(params.id.toString()));
     setToCompare([])
   }
 
@@ -85,17 +89,18 @@ const DataTable = () => {
 
   return (
     <DataGrid
-      style = {{height:"100%"}}
+      style = {{height:"60%"}}
       className={classes.root}
       rows={rows}
       columns={columns}
       onRowClick={onRowClick}
       pageSize={10}
+      autoHeight
       checkboxSelection
       disableSelectionOnClick
-      onSelectionModelChange={selectionModelChanged}
+      onSelectionModelChange={onRowSelect}
       selectionModel={selectionModel}
-      getRowClassName={(params) => params.id == selected ? "selected-datagrid-row" : "datagrid-row"}
+      getRowClassName={(params) => params.id == selectedLaunchId ? "selected-datagrid-row" : "datagrid-row"} // This sets row color for selected row
     />
   );
 };
