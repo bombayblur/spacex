@@ -21,9 +21,9 @@ This will run the code generator to generate the types before hand.
 
 # Approach
 
-### State
+### State Management
 
-Given that this was a tiny project, I used React's Context for state management. Although it is a quick and dirty solution, a more standard solution like Redux would have allowed me to maintain a better project structure. Using Context did allow me to avoid prop drilling, but this also led to a lot of the logic residing in App.tsx which is the entry point of the application.
+Given that this was a tiny project, I used React's Context for state management. Although it is a quick and dirty solution, a more standard solution like Redux would have allowed me to maintain a better project structure. Using Context did allow me to avoid prop drilling, and allowed me to keep the bulk of the logic in App.tsx
 
 ### Data Display
 
