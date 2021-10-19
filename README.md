@@ -2,11 +2,9 @@
 
 This project was created using React, Typescript, Apollo, Graphql. Just run the project using `yarn start` or `npm start` to get started.
 
+This is a simple SpaceX Launches Tracker that gives you a glimpse of information of past launches. the left side is the list of launches and the right side contains an information pane that gives the user more details about the launch. 
+
 ## Available Scripts
-
-### `yarn generate --watch`
-
-This will run the code generator to generate the types before hand.
 
 ### `yarn start`
 
@@ -15,7 +13,11 @@ Open [http://localhost:3000]
 
 ### `yarn test:e2e`
 
-Launches the test runner with a headfull chrome. This script runs the test that was requested in the coding challenge. The test picks two random launches and then compares them and returns back to the previous screen.
+Launches the test runner with a headfull chrome. This script runs the test that was requested in the coding challenge. The test picks two random launches and then compares them and returns back to the previous screen. The test checks for certain components that should be loaded. When a comparisson is carried out the test checks wheter the correct launches are being compared or not.
+
+### `yarn generate --watch`
+
+This will run the code generator to generate the types before hand.
 
 # Approach
 
