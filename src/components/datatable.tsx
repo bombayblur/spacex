@@ -100,7 +100,7 @@ const DataTable = () => {
       disableSelectionOnClick
       onSelectionModelChange={onRowSelect}
       selectionModel={selectionModel}
-      getRowClassName={(params) => params.id == selectedLaunchId ? "selected-datagrid-row" : "datagrid-row"} // This sets row color for selected row
+      getRowClassName={(params) => params.id === selectedLaunchId ? "selected-datagrid-row" : "datagrid-row"} // This sets row color for selected row
     />
   );
 };
