@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/43dbe794-d217-4c54-9706-e95c20d2555e/deploy-status)](https://app.netlify.com/sites/saurab-spacex/deploys)
+
 # SpaceX Launches Tracker
 
 This project was created using React, Material-UI, Typescript, Apollo, Graphql. Just run the project using `yarn start` or `npm start` to get started.
